@@ -36,9 +36,8 @@ for picturePath in picturePathList:
     upper_green = np.array([70,255,255])    
 
     # The masking threshold generator #
-    mask = cv2.inRange(hsv, lower_green, upper_green)
-
-    cv2.imshow('mask',mask)
+    greenMask = cv2.inRange(hsv, lower_green, upper_green)
+    cv2.imshow('green mask',greenMask)
     # Fin extraccion verde
 
     # Erosion
@@ -46,11 +45,15 @@ for picturePath in picturePathList:
     structuralElementSize = 5
     kernel = np.ones((structuralElementSize, structuralElementSize), np.uint8)
     # Using cv2.erode() method 
-    image = cv2.erode(mask, kernel) 
-
-    cv2.imshow('Imagen erosionada',image)    
+    img_erosion = cv2.erode(greenMask, kernel, iterations=1)
+    cv2.imshow('Imagen erosionada',img_erosion)     
 
     # Fin erosion
+
+    # Dilatacion -  necesaria?
+    img_dilation = cv2.dilate(img_erosion, kernel, iterations=1)
+    cv2.imshow('Imagen dilatada',img_dilation)     
+    # Fin dilatacion
 
     
 
