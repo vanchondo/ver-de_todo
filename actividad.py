@@ -55,6 +55,20 @@ for picturePath in picturePathList:
     cv2.imshow('Imagen dilatada',img_dilation)     
     # Fin dilatacion
 
+
+    # Contar
+    cnts = cv2.findContours(img_dilation, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    cnts = cnts[0] if len(cnts) == 2 else cnts[1]
+    trees = 0
+    for c in cnts:
+        area = cv2.contourArea(c)
+        if area > 50:
+            x,y,w,h = cv2.boundingRect(c)
+            cv2.drawContours(img_dilation, [c], -1, (36,255,12), 2)
+            trees += 1
+
+    print("Conteo: ", trees)
+    # Fin contar
     
 
     cv2.waitKey(0) 
