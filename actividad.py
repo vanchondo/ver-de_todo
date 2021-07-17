@@ -41,6 +41,17 @@ for picturePath in picturePathList:
     cv2.imshow('mask',mask)
     # Fin extraccion verde
 
+    # Erosion
+    # Creating kernel
+    structuralElementSize = 5
+    kernel = np.ones((structuralElementSize, structuralElementSize), np.uint8)
+    # Using cv2.erode() method 
+    image = cv2.erode(mask, kernel) 
+
+    cv2.imshow('Imagen erosionada',image)    
+
+    # Fin erosion
+
     
 
     cv2.waitKey(0) 
