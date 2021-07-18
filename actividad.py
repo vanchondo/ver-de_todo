@@ -46,7 +46,7 @@ def dilateImage(image, structuralElementSize):
     # Creacion del kernel
     kernel = np.ones((structuralElementSize, structuralElementSize), np.uint8)
     # Dilatar imagen usando cv2.dilate()
-    img = cv2.dilate(image, kernel, iterations=1)    
+    img = cv2.dilate(image, kernel, iterations=2)    
 
     return img    
 
