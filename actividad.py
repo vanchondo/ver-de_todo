@@ -50,7 +50,7 @@ def dilateImage(image, structuralElementSize):
 
     return img    
 
-## Funcion que cuenta el numero de objetos en la imagen
+### Funcion que cuenta el numero de objetos en la imagen
 def countObjects(img):
     counters = cv2.findContours(img, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
@@ -65,13 +65,14 @@ def countObjects(img):
     
     return treeCount
 
-### Agrega la imagen al plot para ser mostrada
+### Funcion que agrega la imagen al plot para ser mostrada
 def addImageToPlot(img, title, subplot):
     plt.subplot(subplot)
     plt.imshow(img, "gray")
     plt.axis("off")
     plt.title(title)
 
+### Funcion que agrega un titulo al plot
 def addTitleToPlot():
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
     fig.suptitle('Zonas verdes contadas: ' + str(count), fontsize=25)
